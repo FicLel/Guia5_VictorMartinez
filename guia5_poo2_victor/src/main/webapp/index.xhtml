@@ -65,9 +65,24 @@ and open the template in the editor.
                                 </h:selectOneMenu>
                             </div>
                             <div class="form-group">
-                                <h:commandLink id="btonGuar" actionListener="#{alumnosBean.guar()}"  class="btn btn-primary" onclick="setMessage('MESS_ERRO','Alerta','Este es el mensaje'); return false;">
-                                    <i class="fa fa-check"/> Guardar
-                                </h:commandLink>
+                                <div style="display: inline-block">
+                                    <h:commandLink id="btonGuar" class="btn btn-primary">
+                                        <p:ajax listener="#{alumnosBean.guar()}" process="@form" update="@form :FormTabl:ContAlum"/>
+                                        <i class="fa fa-save"/> Guardar
+                                    </h:commandLink>
+                                </div>
+                                <div style="display: inline-block">
+                                    <h:commandLink id="btonModi" class="btn btn-success">
+                                        <p:ajax listener="#{alumnosBean.modi()}" process="@form" update="@form :FormTabl:ContAlum"/>
+                                        <i class="fa fa-pencil"/> Modificar
+                                    </h:commandLink>
+                                </div>
+                                <div style="display: inline-block">
+                                    <h:commandLink id="btonElim" class="btn btn-danger">
+                                        <p:ajax listener="#{alumnosBean.elim(alumnosBean.objeAlum.codiAlum)}" process="@form" update="@form :FormTabl:ContAlum"/>
+                                        <i class="fa fa-trash-o"/> Eliminar
+                                    </h:commandLink>
+                                </div>
                             </div>
                         </h:form>
                     </div>
